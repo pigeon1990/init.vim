@@ -70,6 +70,7 @@ Plug 'plasticboy/vim-markdown'
 Plug 'easymotion/vim-easymotion'
 Plug 'tpope/vim-fugitive'
 Plug 'ekalinin/Dockerfile.vim'
+Plug 'posva/vim-vue'
 
 call plug#end()
 
@@ -90,3 +91,4 @@ set fileencodings=ucs-bom,utf-8,utf-16,gbk,big5,gb18030,latin1
 set listchars=eol:$,tab:>-,trail:~,extends:>,precedes:<
 "set autochdir
 nnoremap <leader>cd :cd %:p:h<CR>
+set autoread

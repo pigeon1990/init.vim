@@ -71,6 +71,10 @@ Plug 'easymotion/vim-easymotion'
 Plug 'tpope/vim-fugitive'
 Plug 'ekalinin/Dockerfile.vim'
 Plug 'posva/vim-vue'
+autocmd FileType vue syntax sync fromstart
+Plug 'rhysd/vim-clang-format'
+Plug 'kana/vim-operator-user'
+autocmd FileType proto ClangFormatAutoEnable
 
 call plug#end()
 
@@ -92,3 +96,4 @@ set listchars=eol:$,tab:>-,trail:~,extends:>,precedes:<
 "set autochdir
 nnoremap <leader>cd :cd %:p:h<CR>
 set autoread
+autocmd FileType yml setlocal ts=2 sts=2 sw=2 expandtab

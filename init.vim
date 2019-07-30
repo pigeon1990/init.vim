@@ -73,8 +73,9 @@ Plug 'ekalinin/Dockerfile.vim'
 Plug 'posva/vim-vue'
 autocmd FileType vue syntax sync fromstart
 Plug 'rhysd/vim-clang-format'
-Plug 'kana/vim-operator-user'
 autocmd FileType proto ClangFormatAutoEnable
+Plug 'ntpeters/vim-better-whitespace'
+Plug 'pangloss/vim-javascript'
 
 call plug#end()
 

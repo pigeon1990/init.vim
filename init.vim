@@ -76,6 +76,15 @@ Plug 'rhysd/vim-clang-format'
 autocmd FileType proto ClangFormatAutoEnable
 Plug 'ntpeters/vim-better-whitespace'
 Plug 'pangloss/vim-javascript'
+Plug 'Yggdroot/indentLine'
+let g:indentLine_leadingSpaceEnabled=1
+let g:indentLine_leadingSpaceChar = '●'
+let g:indentLine_leadingSpaceChar = '㊎'
+let g:indentLine_leadingSpaceChar = '㊖'
+let g:indentLine_leadingSpaceChar = '▧'
+let g:indentLine_leadingSpaceChar = '@'
+let g:indentLine_leadingSpaceChar = '㊣'
+let g:indentLine_char_list = ['|', '¦', '┆', '┊']
 
 call plug#end()
 
@@ -93,8 +102,29 @@ let mapleader=","
 set nobackup
 set noswapfile
 set fileencodings=ucs-bom,utf-8,utf-16,gbk,big5,gb18030,latin1
-set list lcs=eol:$,tab:>-,trail:~,extends:>,precedes:<
+set list lcs=eol:$,nbsp:_,tab:>-,trail:~,extends:>,precedes:<
 set scrolloff=5
 nnoremap <leader>cd :cd %:p:h<CR>
-set autoread 
-autocmd FileType yml setlocal ts=2 sts=2 sw=2 expandtab
+set autoread
+let g:indentLine_char_list = ['|', '¦', '┆', '┊']
+
+call plug#end()
+
+
+
+
+imap jj <Esc>
+set cursorcolumn
+set cursorline
+set nu
+syntax on
+set clipboard=unnamed
+colorscheme molokai
+let mapleader=","
+set nobackup
+set noswapfile
+set fileencodings=ucs-bom,utf-8,utf-16,gbk,big5,gb18030,latin1
+set list lcs=eol:$,nbsp:_,tab:>-,trail:~,extends:>,precedes:<
+set scrolloff=5
+nnoremap <leader>cd :cd %:p:h<CR>
+set autoread

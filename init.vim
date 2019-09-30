@@ -79,52 +79,53 @@ Plug 'pangloss/vim-javascript'
 Plug 'Yggdroot/indentLine'
 let g:indentLine_leadingSpaceEnabled=1
 let g:indentLine_leadingSpaceChar = '●'
-let g:indentLine_leadingSpaceChar = '㊎'
-let g:indentLine_leadingSpaceChar = '㊖'
-let g:indentLine_leadingSpaceChar = '▧'
-let g:indentLine_leadingSpaceChar = '@'
-let g:indentLine_leadingSpaceChar = '㊣'
 let g:indentLine_char_list = ['|', '¦', '┆', '┊']
-
+Plug 'majutsushi/tagbar'
+"brew install --HEAD universal-ctags/universal-ctags/universal-ctags
+nmap <C-L> :TagbarToggle<CR>
+"autocmd VimEnter * nested :TagbarOpen
+"Plug 'ryanoasis/vim-devicons'
+Plug 'dense-analysis/ale'
+let g:ale_set_highlights = 0
+"How can I change the signs ALE uses?
+let g:ale_sign_error = 'E'
+let g:ale_sign_warning = 'I'
+"How can I navigate between errors quickly?
+nmap <silent> <C-k> <Plug>(ale_previous_wrap)
+nmap <silent> <C-j> <Plug>(ale_next_wrap)
+"TODO Set this. Airline will handle the rest.
+let g:airline#extensions#ale#enabled = 1
+let g:ale_echo_msg_error_str = 'E'
+let g:ale_echo_msg_warning_str = 'W'
+let g:ale_echo_msg_format = '[%severity%] %s'
 call plug#end()
 
 
 
 
-imap jj <Esc>
+syntax on
+colorscheme molokai
+let mapleader=","
 set cursorcolumn
 set cursorline
 set nu
-syntax on
+set relativenumber
 set clipboard=unnamed
-colorscheme molokai
-let mapleader=","
 set nobackup
 set noswapfile
 set fileencodings=ucs-bom,utf-8,utf-16,gbk,big5,gb18030,latin1
 set list lcs=eol:$,nbsp:_,tab:>-,trail:~,extends:>,precedes:<
-set scrolloff=5
-nnoremap <leader>cd :cd %:p:h<CR>
+set scrolloff=10
 set autoread
-let g:indentLine_char_list = ['|', '¦', '┆', '┊']
-
-call plug#end()
-
-
-
-
 imap jj <Esc>
-set cursorcolumn
-set cursorline
-set nu
-syntax on
-set clipboard=unnamed
-colorscheme molokai
-let mapleader=","
-set nobackup
-set noswapfile
-set fileencodings=ucs-bom,utf-8,utf-16,gbk,big5,gb18030,latin1
-set list lcs=eol:$,nbsp:_,tab:>-,trail:~,extends:>,precedes:<
-set scrolloff=5
-nnoremap <leader>cd :cd %:p:h<CR>
-set autoread
+nmap <leader>cd :cd %:p:h<CR>
+" FIX hi for gitgutter
+hi GitGutterAdd     ctermfg=2 ctermbg=236 cterm=bold
+hi GitGutterChange  ctermfg=3 ctermbg=236 cterm=bold
+hi GitGutterDelete  ctermfg=1 ctermbg=236 cterm=bold
+" FIX hi for ale
+hi error ctermfg=196 ctermbg=236 cterm=bold
+hi Todo ctermfg=44 ctermbg=236 cterm=bold
+
+highlight CursorColumn ctermbg=236
+highlight CursorLine ctermbg=236

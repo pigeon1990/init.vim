@@ -16,6 +16,7 @@ autocmd FileType go nmap <Leader>i <Plug>(go-info)
 autocmd FileType go nmap <leader>gt :GoDeclsDir<cr>
 autocmd FileType go nmap <leader>gj :GoAddTags<cr>
 autocmd FileType go nmap <leader>f :GoFmt<cr>
+autocmd FileType go nmap <leader>q :GoIfErr<cr>
 autocmd FileType go nmap <F12> <Plug>(go-def)
 
 Plug 'scrooloose/nerdtree'

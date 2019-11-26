@@ -99,6 +99,9 @@ let g:airline#extensions#ale#enabled = 1
 let g:ale_echo_msg_error_str = 'E'
 let g:ale_echo_msg_warning_str = 'W'
 let g:ale_echo_msg_format = '[%severity%] %s'
+
+Plug 'dart-lang/dart-vim-plugin'
+
 call plug#end()
 
 
@@ -110,13 +113,13 @@ let mapleader=","
 set cursorcolumn
 set cursorline
 set nu
-set relativenumber
+"set relativenumber
 set clipboard=unnamed
 set nobackup
 set noswapfile
 set fileencodings=ucs-bom,utf-8,utf-16,gbk,big5,gb18030,latin1
 set list lcs=eol:$,nbsp:_,tab:>-,trail:~,extends:>,precedes:<
-set scrolloff=10
+"set scrolloff=10
 set autoread
 imap jj <Esc>
 nmap <leader>cd :cd %:p:h<CR>

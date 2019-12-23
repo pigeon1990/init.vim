@@ -77,7 +77,7 @@ Plug 'rhysd/vim-clang-format'
 autocmd FileType proto ClangFormatAutoEnable
 Plug 'ntpeters/vim-better-whitespace'
 Plug 'pangloss/vim-javascript'
-Plug 'Yggdroot/indentLine'
+"Plug 'Yggdroot/indentLine'
 let g:indentLine_leadingSpaceEnabled=1
 let g:indentLine_leadingSpaceChar = '●'
 let g:indentLine_char_list = ['|', '¦', '┆', '┊']
@@ -85,7 +85,9 @@ Plug 'majutsushi/tagbar'
 "brew install --HEAD universal-ctags/universal-ctags/universal-ctags
 nmap <C-L> :TagbarToggle<CR>
 "autocmd VimEnter * nested :TagbarOpen
-"Plug 'ryanoasis/vim-devicons'
+Plug 'ryanoasis/vim-devicons'
+let g:WebDevIconsUnicodeDecorateFileNodesExtensionSymbols = {} " needed
+let g:WebDevIconsUnicodeDecorateFileNodesExtensionSymbols['go'] = ''
 Plug 'dense-analysis/ale'
 let g:ale_set_highlights = 0
 "How can I change the signs ALE uses?
@@ -102,6 +104,29 @@ let g:ale_echo_msg_format = '[%severity%] %s'
 
 Plug 'dart-lang/dart-vim-plugin'
 
+" THE GOOGLE CODEFMT
+" Add maktaba and codefmt to the runtimepath.
+" (The latter must be installed before it can be used.)
+Plug 'google/vim-maktaba'
+Plug 'google/vim-codefmt'
+" Also add Glaive, which is used to configure codefmt's maktaba flags. See
+" `:help :Glaive` for usage.
+Plug 'google/vim-glaive'
+augroup autoformat_settings
+  "autocmd FileType bzl AutoFormatBuffer buildifier
+  autocmd FileType c,cpp,proto,javascript AutoFormatBuffer clang-format
+  "autocmd FileType dart AutoFormatBuffer dartfmt
+  "autocmd FileType go AutoFormatBuffer gofmt
+  "autocmd FileType gn AutoFormatBuffer gn
+  autocmd FileType html,css,sass,scss,less,json AutoFormatBuffer js-beautify
+  "autocmd FileType java AutoFormatBuffer google-java-format
+  "autocmd FileType python AutoFormatBuffer yapf
+  "" Alternative: autocmd FileType python AutoFormatBuffer autopep8
+  "autocmd FileType rust AutoFormatBuffer rustfmt
+  "autocmd FileType vue AutoFormatBuffer prettier
+Plug 'triglav/vim-visual-increment'
+augroup END
+
 call plug#end()
 
 
@@ -113,7 +138,7 @@ let mapleader=","
 set cursorcolumn
 set cursorline
 set nu
-"set relativenumber
+set relativenumber
 set clipboard=unnamed
 set nobackup
 set noswapfile

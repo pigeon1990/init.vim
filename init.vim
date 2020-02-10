@@ -3,6 +3,7 @@ call plug#begin('~/.vim/plugged')
 Plug 'VundleVim/Vundle.vim'
 Plug 'fatih/vim-go'
 let g:go_fmt_command = "goimports"
+let g:go_rename_command = 'gopls'
 autocmd FileType go nmap <leader>b  <Plug>(go-build)
 autocmd FileType go nmap <leader>r  <Plug>(go-run)
 autocmd FileType go nmap <leader>t  <Plug>(go-test)
@@ -138,7 +139,7 @@ let mapleader=","
 set cursorcolumn
 set cursorline
 set nu
-set relativenumber
+"set relativenumber
 set clipboard=unnamed
 set nobackup
 set noswapfile

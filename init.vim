@@ -1,6 +1,7 @@
 call plug#begin('~/.vim/plugged')
 
-Plug 'VundleVim/Vundle.vim'
+
+
 Plug 'fatih/vim-go'
 let g:go_fmt_command = "goimports"
 let g:go_rename_command = 'gopls'
@@ -33,7 +34,6 @@ Plug 'vim-airline/vim-airline'
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#left_sep = ' '
 let g:airline#extensions#tabline#left_alt_sep = '|'
-Plug 'vim-airline/vim-airline-themes'
 
 Plug 'ervandew/supertab'
 let g:SuperTabDefaultCompletionType = '<c-x><c-o>'
@@ -65,27 +65,22 @@ let g:fzf_colors =
 			\ 'spinner': ['fg', 'Label'],
 			\ 'header':  ['fg', 'Comment'] }
 
-Plug 'terryma/vim-multiple-cursors'
-Plug 'airblade/vim-gitgutter'
-Plug 'tomasr/molokai'
-Plug 'plasticboy/vim-markdown'
-Plug 'easymotion/vim-easymotion'
-Plug 'tpope/vim-fugitive'
-Plug 'ekalinin/Dockerfile.vim'
 Plug 'posva/vim-vue'
 autocmd FileType vue syntax sync fromstart
+
 Plug 'rhysd/vim-clang-format'
 autocmd FileType proto ClangFormatAutoEnable
-Plug 'ntpeters/vim-better-whitespace'
-Plug 'pangloss/vim-javascript'
-"Plug 'Yggdroot/indentLine'
+
+Plug 'Yggdroot/indentLine'
 let g:indentLine_leadingSpaceEnabled=1
 let g:indentLine_leadingSpaceChar = '●'
 let g:indentLine_char_list = ['|', '¦', '┆', '┊']
+
 Plug 'majutsushi/tagbar'
+"autocmd VimEnter * nested :TagbarOpen
 "brew install --HEAD universal-ctags/universal-ctags/universal-ctags
 nmap <C-L> :TagbarToggle<CR>
-"autocmd VimEnter * nested :TagbarOpen
+
 Plug 'ryanoasis/vim-devicons'
 let g:WebDevIconsUnicodeDecorateFileNodesExtensionSymbols = {} " needed
 let g:WebDevIconsUnicodeDecorateFileNodesExtensionSymbols['go'] = ''
@@ -103,15 +98,19 @@ let g:ale_echo_msg_error_str = 'E'
 let g:ale_echo_msg_warning_str = 'W'
 let g:ale_echo_msg_format = '[%severity%] %s'
 
-Plug 'dart-lang/dart-vim-plugin'
-
-" THE GOOGLE CODEFMT
-" Add maktaba and codefmt to the runtimepath.
-" (The latter must be installed before it can be used.)
+Plug 'vim-airline/vim-airline-themes'
+Plug 'terryma/vim-multiple-cursors'
+Plug 'airblade/vim-gitgutter'
+Plug 'tomasr/molokai'
+Plug 'plasticboy/vim-markdown'
+Plug 'easymotion/vim-easymotion'
+Plug 'tpope/vim-fugitive'
+Plug 'ekalinin/Dockerfile.vim'
+Plug 'ntpeters/vim-better-whitespace'
+Plug 'pangloss/vim-javascript'
+Plug 'triglav/vim-visual-increment'
 Plug 'google/vim-maktaba'
 Plug 'google/vim-codefmt'
-" Also add Glaive, which is used to configure codefmt's maktaba flags. See
-" `:help :Glaive` for usage.
 Plug 'google/vim-glaive'
 augroup autoformat_settings
   "autocmd FileType bzl AutoFormatBuffer buildifier
@@ -125,8 +124,9 @@ augroup autoformat_settings
   "" Alternative: autocmd FileType python AutoFormatBuffer autopep8
   "autocmd FileType rust AutoFormatBuffer rustfmt
   "autocmd FileType vue AutoFormatBuffer prettier
-Plug 'triglav/vim-visual-increment'
 augroup END
+
+
 
 call plug#end()
 
@@ -136,19 +136,22 @@ call plug#end()
 syntax on
 colorscheme molokai
 let mapleader=","
+
+"set relativenumber
+"set scrolloff=10
 set cursorcolumn
 set cursorline
 set nu
-"set relativenumber
 set clipboard=unnamed
 set nobackup
 set noswapfile
 set fileencodings=ucs-bom,utf-8,utf-16,gbk,big5,gb18030,latin1
 set list lcs=eol:$,nbsp:_,tab:>-,trail:~,extends:>,precedes:<
-"set scrolloff=10
 set autoread
+
 imap jj <Esc>
 nmap <leader>cd :cd %:p:h<CR>
+
 " FIX hi for gitgutter
 hi GitGutterAdd     ctermfg=2 ctermbg=236 cterm=bold
 hi GitGutterChange  ctermfg=3 ctermbg=236 cterm=bold
@@ -157,5 +160,5 @@ hi GitGutterDelete  ctermfg=1 ctermbg=236 cterm=bold
 hi error ctermfg=196 ctermbg=236 cterm=bold
 hi Todo ctermfg=44 ctermbg=236 cterm=bold
 
-highlight CursorColumn ctermbg=236
-highlight CursorLine ctermbg=236
+hi CursorColumn ctermbg=236
+hi CursorLine ctermbg=236

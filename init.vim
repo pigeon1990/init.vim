@@ -108,6 +108,7 @@ augroup autoformat_settings
   autocmd FileType vue AutoFormatBuffer prettier
 augroup END
 Plug 'morhetz/gruvbox'
+Plug 'ervandew/supertab'
 let g:gruvbox_contrast_dark='hard'
 call plug#end()
 

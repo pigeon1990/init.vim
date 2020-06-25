@@ -1,8 +1,6 @@
 call plug#begin('~/.vim/plugged')
 
-
-
-Plug 'fatih/vim-go'
+Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 let g:go_fmt_command = "goimports"
 let g:go_rename_command = 'gopls'
 autocmd FileType go nmap <leader>b  <Plug>(go-build)
@@ -35,9 +33,6 @@ let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#left_sep = ' '
 let g:airline#extensions#tabline#left_alt_sep = '|'
 
-Plug 'ervandew/supertab'
-let g:SuperTabDefaultCompletionType = '<c-x><c-o>'
-
 Plug 'mileszs/ack.vim'
 map <c-u> :Ack<space>
 let g:ack_default_options = " -s -H --nocolor --nogroup --column --smart-case --follow"
@@ -65,25 +60,18 @@ let g:fzf_colors =
 			\ 'spinner': ['fg', 'Label'],
 			\ 'header':  ['fg', 'Comment'] }
 
-Plug 'posva/vim-vue'
-autocmd FileType vue syntax sync fromstart
-
-Plug 'rhysd/vim-clang-format'
-autocmd FileType proto ClangFormatAutoEnable
-
 Plug 'Yggdroot/indentLine'
 let g:indentLine_leadingSpaceEnabled=1
 let g:indentLine_leadingSpaceChar = '●'
 let g:indentLine_char_list = ['|', '¦', '┆', '┊']
 
 Plug 'majutsushi/tagbar'
-"autocmd VimEnter * nested :TagbarOpen
-"brew install --HEAD universal-ctags/universal-ctags/universal-ctags
 nmap <C-L> :TagbarToggle<CR>
 
 Plug 'ryanoasis/vim-devicons'
 let g:WebDevIconsUnicodeDecorateFileNodesExtensionSymbols = {} " needed
 let g:WebDevIconsUnicodeDecorateFileNodesExtensionSymbols['go'] = ''
+
 Plug 'dense-analysis/ale'
 let g:ale_set_highlights = 0
 "How can I change the signs ALE uses?
@@ -98,10 +86,12 @@ let g:ale_echo_msg_error_str = 'E'
 let g:ale_echo_msg_warning_str = 'W'
 let g:ale_echo_msg_format = '[%severity%] %s'
 
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
+Plug 'dhruvasagar/vim-table-mode'
+Plug 'tpope/vim-surround'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'terryma/vim-multiple-cursors'
 Plug 'airblade/vim-gitgutter'
-Plug 'tomasr/molokai'
 Plug 'plasticboy/vim-markdown'
 Plug 'easymotion/vim-easymotion'
 Plug 'tpope/vim-fugitive'
@@ -113,37 +103,27 @@ Plug 'google/vim-maktaba'
 Plug 'google/vim-codefmt'
 Plug 'google/vim-glaive'
 augroup autoformat_settings
-  "autocmd FileType bzl AutoFormatBuffer buildifier
-  autocmd FileType c,cpp,proto,javascript AutoFormatBuffer clang-format
-  "autocmd FileType dart AutoFormatBuffer dartfmt
-  "autocmd FileType go AutoFormatBuffer gofmt
-  "autocmd FileType gn AutoFormatBuffer gn
+  autocmd FileType proto AutoFormatBuffer clang-format
   autocmd FileType html,css,sass,scss,less,json AutoFormatBuffer js-beautify
-  "autocmd FileType java AutoFormatBuffer google-java-format
-  "autocmd FileType python AutoFormatBuffer yapf
-  "" Alternative: autocmd FileType python AutoFormatBuffer autopep8
-  "autocmd FileType rust AutoFormatBuffer rustfmt
-  "autocmd FileType vue AutoFormatBuffer prettier
+  autocmd FileType vue AutoFormatBuffer prettier
 augroup END
-
-
-
+Plug 'morhetz/gruvbox'
+let g:gruvbox_contrast_dark='hard'
 call plug#end()
 
 
-
-
 syntax on
-colorscheme molokai
+colorscheme gruvbox
 let mapleader=","
 
-"set relativenumber
-"set scrolloff=10
+set relativenumber
+set scrolloff=10
 set cursorcolumn
 set cursorline
 set nu
 set clipboard=unnamed
 set nobackup
+set nowritebackup
 set noswapfile
 set fileencodings=ucs-bom,utf-8,utf-16,gbk,big5,gb18030,latin1
 set list lcs=eol:$,nbsp:_,tab:>-,trail:~,extends:>,precedes:<
@@ -151,14 +131,3 @@ set autoread
 
 imap jj <Esc>
 nmap <leader>cd :cd %:p:h<CR>
-
-" FIX hi for gitgutter
-hi GitGutterAdd     ctermfg=2 ctermbg=236 cterm=bold
-hi GitGutterChange  ctermfg=3 ctermbg=236 cterm=bold
-hi GitGutterDelete  ctermfg=1 ctermbg=236 cterm=bold
-" FIX hi for ale
-hi error ctermfg=196 ctermbg=236 cterm=bold
-hi Todo ctermfg=44 ctermbg=236 cterm=bold
-
-hi CursorColumn ctermbg=236
-hi CursorLine ctermbg=236

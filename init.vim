@@ -21,12 +21,12 @@ autocmd FileType go nmap <F12> <Plug>(go-def)
 
 Plug 'scrooloose/nerdtree'
 map <C-e> :NERDTreeToggle<CR>
+let g:NERDTreeShowHidden=1
+let NERDTreeShowLineNumbers=1
 let g:NERDTreeDirArrowExpandable = '▸'
 let g:NERDTreeDirArrowCollapsible = '▾'
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
-let g:NERDTreeShowHidden=1
 cnoreabbrev ntf NERDTreeFind
-let NERDTreeShowLineNumbers=1
 
 Plug 'vim-airline/vim-airline'
 let g:airline#extensions#tabline#enabled = 1
@@ -37,28 +37,16 @@ Plug 'mileszs/ack.vim'
 map <c-u> :Ack<space>
 let g:ack_default_options = " -s -H --nocolor --nogroup --column --smart-case --follow"
 
-Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+Plug 'junegunn/fzf.vim'
 cnoreabbrev fzf FZF
 map <C-P> :FZF<CR>
+let g:fzf_layout = { 'window': { 'width': 0.8, 'height': 0.8 } }
+let $FZF_DEFAULT_OPTS='--layout=reverse'
 let g:fzf_action = {
 			\ 'ctrl-t': 'tab split',
 			\ 'ctrl-x': 'split',
 			\ 'ctrl-v': 'vsplit' }
-let g:fzf_layout = { 'window': 'enew' }
-let g:fzf_colors =
-			\ { 'fg':      ['fg', 'Normal'],
-			\ 'bg':      ['bg', 'Normal'],
-			\ 'hl':      ['fg', 'Comment'],
-			\ 'fg+':     ['fg', 'CursorLine', 'CursorColumn', 'Normal'],
-			\ 'bg+':     ['bg', 'CursorLine', 'CursorColumn'],
-			\ 'hl+':     ['fg', 'Statement'],
-			\ 'info':    ['fg', 'PreProc'],
-			\ 'border':  ['fg', 'Ignore'],
-			\ 'prompt':  ['fg', 'Conditional'],
-			\ 'pointer': ['fg', 'Exception'],
-			\ 'marker':  ['fg', 'Keyword'],
-			\ 'spinner': ['fg', 'Label'],
-			\ 'header':  ['fg', 'Comment'] }
 
 Plug 'Yggdroot/indentLine'
 let g:indentLine_leadingSpaceEnabled=1
@@ -69,19 +57,15 @@ Plug 'majutsushi/tagbar'
 nmap <C-L> :TagbarToggle<CR>
 
 Plug 'ryanoasis/vim-devicons'
-let g:WebDevIconsUnicodeDecorateFileNodesExtensionSymbols = {} " needed
+let g:WebDevIconsUnicodeDecorateFileNodesExtensionSymbols = {}
 let g:WebDevIconsUnicodeDecorateFileNodesExtensionSymbols['go'] = ''
 
 Plug 'dense-analysis/ale'
-let g:ale_set_highlights = 0
-"How can I change the signs ALE uses?
-let g:ale_sign_error = 'E'
-let g:ale_sign_warning = 'I'
-"How can I navigate between errors quickly?
 nmap <silent> <C-k> <Plug>(ale_previous_wrap)
 nmap <silent> <C-j> <Plug>(ale_next_wrap)
-"TODO Set this. Airline will handle the rest.
-"let g:airline#extensions#ale#enabled = 1
+let g:ale_set_highlights = 0
+let g:ale_sign_error = 'E'
+let g:ale_sign_warning = 'I'
 let g:ale_echo_msg_error_str = 'E'
 let g:ale_echo_msg_warning_str = 'W'
 let g:ale_echo_msg_format = '[%severity%] %s'
@@ -89,7 +73,6 @@ let g:ale_echo_msg_format = '[%severity%] %s'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'dhruvasagar/vim-table-mode'
 Plug 'tpope/vim-surround'
-Plug 'vim-airline/vim-airline-themes'
 Plug 'terryma/vim-multiple-cursors'
 Plug 'airblade/vim-gitgutter'
 Plug 'plasticboy/vim-markdown'
@@ -99,6 +82,8 @@ Plug 'ekalinin/Dockerfile.vim'
 Plug 'ntpeters/vim-better-whitespace'
 Plug 'pangloss/vim-javascript'
 Plug 'triglav/vim-visual-increment'
+Plug 'ervandew/supertab'
+
 Plug 'google/vim-maktaba'
 Plug 'google/vim-codefmt'
 Plug 'google/vim-glaive'
@@ -107,28 +92,29 @@ augroup autoformat_settings
   autocmd FileType html,css,sass,scss,less,json AutoFormatBuffer js-beautify
   autocmd FileType vue AutoFormatBuffer prettier
 augroup END
+
 Plug 'morhetz/gruvbox'
-Plug 'ervandew/supertab'
 let g:gruvbox_contrast_dark='hard'
+
 call plug#end()
 
 
 syntax on
 colorscheme gruvbox
 let mapleader=","
+imap jj <Esc>
+nmap <leader>cd :cd %:p:h<CR>
 
 set relativenumber
-set scrolloff=10
 set cursorcolumn
 set cursorline
-set nu
-set clipboard=unnamed
+set number
 set nobackup
 set nowritebackup
 set noswapfile
-set fileencodings=ucs-bom,utf-8,utf-16,gbk,big5,gb18030,latin1
-set list lcs=eol:$,nbsp:_,tab:>-,trail:~,extends:>,precedes:<
 set autoread
+set scrolloff=10
+set clipboard=unnamed
+set list lcs=eol:$,nbsp:_,tab:>-,trail:~,extends:>,precedes:<
+set fileencodings=ucs-bom,utf-8,utf-16,gbk,big5,gb18030,latin1
 
-imap jj <Esc>
-nmap <leader>cd :cd %:p:h<CR>

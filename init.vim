@@ -47,7 +47,10 @@ let g:fzf_action = {
 			\ 'ctrl-t': 'tab split',
 			\ 'ctrl-x': 'split',
 			\ 'ctrl-v': 'vsplit' }
-
+" FIX indentLine json 文件不显示双引号的问题
+" https://github.com/Yggdroot/indentLine/issues/140
+Plug 'elzr/vim-json'
+let g:vim_json_syntax_conceal = 0
 Plug 'Yggdroot/indentLine'
 let g:indentLine_leadingSpaceEnabled=1
 let g:indentLine_leadingSpaceChar = '●'
@@ -75,12 +78,10 @@ Plug 'dhruvasagar/vim-table-mode'
 Plug 'tpope/vim-surround'
 Plug 'terryma/vim-multiple-cursors'
 Plug 'airblade/vim-gitgutter'
-Plug 'plasticboy/vim-markdown'
 Plug 'easymotion/vim-easymotion'
 Plug 'tpope/vim-fugitive'
 Plug 'ekalinin/Dockerfile.vim'
 Plug 'ntpeters/vim-better-whitespace'
-Plug 'pangloss/vim-javascript'
 Plug 'triglav/vim-visual-increment'
 Plug 'ervandew/supertab'
 
@@ -93,8 +94,12 @@ augroup autoformat_settings
   autocmd FileType vue AutoFormatBuffer prettier
 augroup END
 
+Plug 'plasticboy/vim-markdown'
+let g:vim_markdown_conceal = 0
+
 Plug 'morhetz/gruvbox'
 let g:gruvbox_contrast_dark='hard'
+
 
 call plug#end()
 

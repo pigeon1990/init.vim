@@ -94,12 +94,11 @@ augroup autoformat_settings
   autocmd FileType vue AutoFormatBuffer prettier
 augroup END
 
-Plug 'plasticboy/vim-markdown'
-let g:vim_markdown_conceal = 0
-
 Plug 'morhetz/gruvbox'
 let g:gruvbox_contrast_dark='hard'
 
+Plug 'plasticboy/vim-markdown'
+let g:vim_markdown_conceal = 0
 
 call plug#end()
 
